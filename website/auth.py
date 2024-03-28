@@ -4,7 +4,7 @@ from flask import Blueprint
 
 auth = Blueprint("auth",__name__) # Define name of this blueprint == auth, same as file name for simplicity
 
-@auth.route('/login')
+@auth.route('/login')             # path for login page
 def login():
     return "<p>Login</p>"
 
