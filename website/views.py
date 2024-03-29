@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
          # define this file is a blueprint of our app which means it has a bunch of Routes (URL-s) inside
          # routes define the mapping between URLs and the functions that handle requests to those URLs. 
 
@@ -6,4 +6,4 @@ views = Blueprint("views",__name__) # Define name of this blueprint == views, sa
 
 @views.route('/')                   # define first route as homepage /
 def home():                         # whenever we go to '/' home(main website) will run this function
-    return "<h1>Test</h1>"
+    return render_template("home.html")

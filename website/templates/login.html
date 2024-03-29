@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+<!-- First block that Overrides the original block title in base.html -->
+{% block title %}Log in{% endblock %}
+
+<!-- Second block that Overrides the original block content in base.html -->
+{% block content %}
+<h1>!! This is the login page !!</h1>
+<!-- Below variables defined in auth.py  -->
+{{ text }} {{ user }}
+<!-- end of the block we insert to login page  -->
+{% endblock %}
