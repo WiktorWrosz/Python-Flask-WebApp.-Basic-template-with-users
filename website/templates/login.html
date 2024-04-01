@@ -4,8 +4,68 @@
 
 <!-- Second block that Overrides the original block content in base.html -->
 {% block content %}
-<h1>!! This is the login page !!</h1>
+<form method="POST">
+  <!-- Form method set to POST, creates an HTML form for user sign-up, with fields for email, first name, and password.-->
+  <!-- When submitted, the data is sent to the server using the POST method. -->
+  <h3 align="center">Sign Up</h3>
+  <!-- Heading for the sign-up form -->
+  <div class="form-group">
+    <!-- Form group for email input -->
+    <!-- Bootstrap class for styling form elements -->
+    <!-- Adds spacing and alignment to form controls -->
+    <!-- Creates consistent and responsive form layouts -->
+    <label for="email">Email Address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter email"
+    />
+    <!-- Email input field -->
+  </div>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+
+    <input
+      type="text"
+      class="form-control"
+      id="firstName"
+      name="firstName"
+      placeholder="Enter First Name"
+    />
+    <!-- First name input field -->
+  </div>
+  <div class="form-group">
+    <label for="password1">Password</label>
+
+    <input
+      type="password"
+      class="form-control"
+      id="password1"
+      name="password1"
+      placeholder="Enter Password"
+    />
+    <!-- Password input field -->
+  </div>
+  <div class="form-group">
+    <label for="password2">Password (Confirm)</label>
+
+    <input
+      type="password"
+      class="form-control"
+      id="password2"
+      name="password2"
+      placeholder="Confirm Password"
+    />
+    <!-- Password confirmation input field -->
+  </div>
+  <br />
+  <!-- Line break -->
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <!-- Submit button for the form -->
+</form>
 <!-- Below variables defined in auth.py  -->
-{{ text }} {{ user }}
+
 <!-- end of the block we insert to login page  -->
 {% endblock %}
