@@ -2,7 +2,7 @@ from flask import Flask                 # 1st first thing to do while creating f
 from flask_sqlalchemy import SQLAlchemy #  Import SQLAlchemy for database management
 
 
-db=SQLAlchemy()                         # Initialize SQLAlchemy for database operations
+db=SQLAlchemy()                         #  Initialize SQLAlchemy for database operations by Create object db.
 DB_NAME = "databse.db"
 
 def create_app():                       # create a flask application 'app'
