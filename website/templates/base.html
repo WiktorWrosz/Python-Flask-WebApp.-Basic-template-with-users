@@ -46,17 +46,45 @@
         <div class="navbar-nav">
           <!-- Login link -->
           <a class="nav-item nav-link" id="login" href="/login">Log in</a>
-          <!-- Sign Up link -->
           <a class="nav-item nav-link" id="singUp" href="/sign-up">Sign Up</a>
-          <!-- Logout link -->
           <a class="nav-item nav-link" id="logout" href="/logout">Log out</a>
-          <!-- Home link -->
           <a class="nav-item nav-link" id="home" href="/">Home</a>
         </div>
       </div>
     </nav>
 
-    {% %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    <!-- START of flashed messages -->
+    {% if messages %}
+    <!-- if there are ANY messages... -->
+    {% for category, message in messages %}
+    <!-- ... loop through all messages... -->
+    {% if category == 'error' %}
+    <!--... and check if they are errors, if they are display them as alerts-danger (RED) -->
+
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+      <!-- Display the flashed error message -->
+      {{ message }}
+
+      <!-- Button to close the alert -->
+      <button type="button" class="close" data-dismiss="alert">
+        <!-- Icon (×) to indicate close action -->
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <!--... if not errors, display them (GREEN) -->
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+      <!-- Display the flashed success message -->
+      {{ message }}
+
+      <!-- Button to close the alert -->
+      <button type="button" class="close" data-dismiss="alert">
+        <!-- Icon (×) to indicate close action -->
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
 
     <div class="container">{% block content %} {% endblock %}</div>
     <!-- the main content on home webpage, refers to home.html file -->
