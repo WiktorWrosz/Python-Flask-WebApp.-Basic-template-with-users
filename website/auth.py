@@ -1,4 +1,8 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, redirect, url_for
+from .models import User
+from werkzeug.security import generate_password_hash, check_password_hash
+from . import db
+
          # define this file is a blueprint of our app which means it has a bunch of Routes (URL-s) inside
          # routes define the mapping between URLs and the functions that handle requests to those URLs. 
 
@@ -31,7 +35,7 @@ def sign_up():
         
         email = request.form.get('email')
         # Retrieves the 'email' field value from the form data.
-        firstName = request.form.get('firstName')
+        first_name = request.form.get('firstName')
         # Retrieves the 'firstName' field value from the form data.
         password1 = request.form.get('password1')
         # Retrieves the 'password1' field value from the form data.
@@ -43,7 +47,7 @@ def sign_up():
             flash('Email must be longer than 3 characters.', category='error')
             # Flashes an error message to be displayed to the user.
 
-        elif len(firstName) < 2:
+        elif len(first_name) < 2:
         # Checks if the length of the first name is less than 2 characters.
             flash('First Name must be longer than 1 character.', category='error')
             # Flashes an error message to be displayed to the user.
@@ -58,12 +62,19 @@ def sign_up():
             flash('Password must be at least 7 characters', category='error')
             # Flashes an error message to be displayed to the user.
 
-        else:
-        # If none of the above conditions are met, indicating successful form submission.
-            flash('Account created successfully', category='success') 
-            # Flashes a success message to be displayed to the user.
-
+        else: # If none of the above conditions are met, indicating successful form submission.
+        
             # Code to add the user to the database would typically go here.
+            new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1))
+            db.session.add(new_user)
+            db.session.commit()
+                        
+            flash('Account created successfully', category='success')  # Flashes a success message to be displayed to the user.
+            return redirect(url_for('views.home'))
+            
+
+
+
 
     return render_template("signup.html")
     # Renders the 'signup.html' template and returns it as the response to the request.
