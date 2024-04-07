@@ -31,7 +31,9 @@ def create_app():                       # create a flask application 'app'
     
     @login_manager.user_loader
     def load_user(id):
-        return User.query.get(int(id)) # works similar to filter by and by default it will look for primary key and check if it is equal to int of id that is passed
+        return User.query.get(int(id))  # This @decorator loads a user object from the database using the provided user ID stored in the session.
+                                        # tells flask how we log in user, what user are we looking for
+                                        # If the user is found, it returns the user object; otherwise, it returns None.
 
     return app                          # return 'app' from function create_app()
 

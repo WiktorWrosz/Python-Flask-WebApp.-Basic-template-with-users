@@ -29,7 +29,7 @@ def login():
         else:
             flash('Wrong Email or does not exist', category='error')
 
-    return render_template("login.html", boolean=True)
+    return render_template("login.html", user=current_user)
  
 @auth.route('/logout')                       # Defines a route '/logout' under the 'auth' blueprint.
 @login_required                              # Ensures that only logged-in users can access this route.
@@ -73,8 +73,8 @@ def sign_up():                               # Defines a function named 'sign_up
             db.session.commit()
                         
             login_user(user, remember=True)            
-            flash('Account created successfully', category='success')  # Flashes a success message to be displayed to the user.
+            flash('Account created successfully', category='success')   # Flashes a success message to be displayed to the user.
             return redirect(url_for('views.home'))
             
-    return render_template("signup.html")
+    return render_template("signup.html", user=current_user)            # Passes data of the currently logged-in user to the website.
     # Renders the 'signup.html' template and returns it as the response to the request.
