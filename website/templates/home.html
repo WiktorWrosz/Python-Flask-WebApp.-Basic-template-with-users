@@ -2,8 +2,29 @@
 
 <!-- First block that Overrides the original block title in base.html -->
 {% block title %}Home{% endblock %}
-
 <!-- Second block that Overrides the original block content in base.html -->
 {% block content %}
-<h1>!! This is the home page !!</h1>
+
+<h1 align="center">NOTES</h1>
+<!-- Starts an unordered list (<ul>) with two CSS classes applied: "list-group" and "list-group-flash". Additionally, it assigns the ID "notes" to this unordered list. -->
+
+<ul class="list-group list-group-flash" id="notes">
+  {% for note in user.notes %}
+  <!-- Starts a loop for each note object in the user.notes list -->
+  <li>{{ note.data }}</li>
+  <!-- Displays the value of the data attribute of each note object -->
+  {% endfor %}
+</ul>
+
+<form method="POST">
+  <!-- Start of a form with POST method -->
+  <textarea name="note" id="note" class="form-control"></textarea>
+  <!-- TEXTAREA (not yet notes) input field for adding a note, with the name "note" and CSS class "form-control" -->
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+    <!-- Button element for submitting the form with the label "Add Note" and CSS classes "btn" and "btn-primary" -->
+  </div>
+</form>
+
 {% endblock %}

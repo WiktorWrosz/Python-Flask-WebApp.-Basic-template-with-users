@@ -46,6 +46,7 @@
         <div class="navbar-nav">
           <!-- links to particular pages inside navbar -->
           {% if user.is_authenticated %}
+          <!-- by passing user=current_user we control what pages will be available in navbar -->
           <a class="nav-item nav-link" id="home" href="/">Home</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Log out</a>
           {% else %}
