@@ -1,6 +1,7 @@
 from flask import Flask                 # 1st first thing to do while creating flask app - Import Flask to create a Flask app
 from flask_sqlalchemy import SQLAlchemy #  Import SQLAlchemy for database management
 from os import path
+from flask_login import LoginManager
 
 db=SQLAlchemy()                         #  Initialize SQLAlchemy for database operations by Create object db.
 DB_NAME = "databse.db"                  # sets name of database
@@ -23,6 +24,14 @@ def create_app():                       # create a flask application 'app'
     
     with app.app_context():
         db.create_all()
+
+    login_manager = LoginManager()              # Create an instance of LoginManager to manage user authentication
+    login_manager.init_app(app)                 # Initialize LoginManager to work with the Flask app. This enables login functionality across the application. This line associates the initialized LoginManager with the Flask app, enabling login functionality throughout the application.
+    login_manager.login_view = 'auth.login'     # Set the login view. Sends unlogged user to auth.py where login function is. When a user tries to access a protected route without being logged in, Flask will redirect them to this view to prompt them to log in.
+    
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id)) # works similar to filter by and by default it will look for primary key and check if it is equal to int of id that is passed
 
     return app                          # return 'app' from function create_app()
 
