@@ -8,7 +8,7 @@
 <h1 align="center">NOTES</h1>
 <!-- Starts an unordered list (<ul>) with two CSS classes applied: "list-group" and "list-group-flash". Additionally, it assigns the ID "notes" to this unordered list. -->
 
-<ul class="list-group list-group-flash" id="notes">
+<ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
   <!-- Starts a loop for each note object in the user.notes list -->
   <li>{{ note.data }}</li>
