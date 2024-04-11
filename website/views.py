@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user        #current_user is used for checking if the user is logged in or not
 from .models import Note                    # Import the Note model from the current package
 from . import db                            # Import the db object from the current package
+import json
 
 views = Blueprint("views",__name__)         # Define name of this blueprint == views, same as file name for simplicity
                                             # define this file is a blueprint of our app which means it has a bunch of Routes (URL-s) inside
@@ -22,3 +23,14 @@ def home():                                 # whenever we go to '/' home(main we
 
     return render_template("home.html", user=current_user)      # Passes data of the currently logged-in user to the website.
                                                                 # Render the home template and pass the current user object
+@views.route('delete-note', methods=['POST'])
+def delete_note():
+    note = json.loads(request.data)
+    noteId = note['noteId']
+    note = Note.query.get(noteId)
+    if note:
+        if note.user_id == current_user.id:
+            db.session.delete(note)
+            db.session.commit()
+        
+    return jsonify({})

@@ -24,6 +24,7 @@ def login():
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)                 # 'Remembers' user. Logs in the user with the provided user object and sets the 'remember' option to True,
                                                                 # allowing the user to remain logged in even after closing the browser session.
+                return redirect(url_for('views.home'))
             else:
                 flash('Incorrect password, try again', category='error')
         else:
