@@ -111,13 +111,16 @@
     ></script>
 
     {% block javascript %}
+    <!-- This block is for JavaScript code that enhances functionality on the webpage -->
     <script type="text/javascript">
+      // Define a JavaScript function named deleteNote that takes noteId as an argument
       function deleteNote(noteId) {
+        // Use the Fetch API to make a POST request to "/delete-note" endpoint
         fetch("/delete-note", {
-          method: "POST",
-          body: JSON.stringify({ noteId: noteId }),
+          method: "POST", // Specify the HTTP method as POST
+          body: JSON.stringify({ noteId: noteId }), // Convert the JavaScript object { noteId: noteId } to a JSON string and set it as the request body
         }).then((_res) => {
-          window.location.href = "/";
+          window.location.href = "/"; // After the request is completed, redirect the user to the homepage ("/")
         });
       }
     </script>

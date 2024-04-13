@@ -40,4 +40,4 @@ def create_app():                       # create a flask application 'app'
 def create_database(app):
     if not path.exists('website/' + DB_NAME): # checks if database exist
         db.create_all(app=app)                  # if dosen't exist create db
-        print('Created Database!')
+        print('Created  a NEW DATABSE as there was non detected in your website/ folder !')

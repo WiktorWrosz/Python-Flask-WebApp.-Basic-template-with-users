@@ -20,7 +20,7 @@ def login():
 
         user = User.query.filter_by(email=email).first()        # query db by email
         if user:                                                # if user (exist)
-            if check_password_hash(user.password, password):    # checks if hash of given pasword == db hash password
+            if check_password_hash(user.password, password):    # checks if hash of given password == db hash password
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)                 # 'Remembers' user. Logs in the user with the provided user object and sets the 'remember' option to True,
                                                                 # allowing the user to remain logged in even after closing the browser session.
