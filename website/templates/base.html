@@ -45,14 +45,14 @@
         <!-- Navigation links container -->
         <div class="navbar-nav">
           <!-- links to particular pages inside navbar -->
-          {% if user.is_authenticated %}
+          <!-- {% if user.is_authenticated %} -->
           <!-- by passing user=current_user we control what pages will be available in navbar -->
           <a class="nav-item nav-link" id="home" href="/">Home</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Log out</a>
-          {% else %}
+          <!-- {% else %} -->
           <a class="nav-item nav-link" id="login" href="/login">Log in</a>
           <a class="nav-item nav-link" id="singUp" href="/sign-up">Sign Up</a>
-          {% endif %}
+          <!-- {% endif %} -->
         </div>
       </div>
     </nav>
@@ -91,7 +91,7 @@
     {% endif %} {% endfor %} {% endif %} {% endwith %}
 
     <div class="container">{% block content %} {% endblock %}</div>
-    <!-- the main content on home webpage, refers to home.html file -->
+    <!-- THE MAIN  content on home webpage, refers to home.html file -->
 
     <!-- The below 3 scripts enhance the user experience by providing additional functionality and interactivity to Bootstrap components, such as dropdown menus, tooltips, modals, and other dynamic elements. They are commonly included in web projects that utilize Bootstrap for styling and layout. -->
     <script
