@@ -32,8 +32,8 @@ jobs:
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
-        image: w1w4/wiktor-repo:flask-app
+        image: w1w4/wiktor-repo
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tags: v1.0,latest
+        tags: flask-app-v1.0,flask-app-latest
